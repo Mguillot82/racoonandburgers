@@ -10,3 +10,14 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.nav-link {
+  color: $primary;
+  &:hover {
+    color: $secondary;
+  }
+}
+
+a.dropdown-item:hover {
+  background-color: $light-brown;
+}
