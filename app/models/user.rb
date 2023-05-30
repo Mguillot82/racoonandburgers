@@ -6,4 +6,18 @@ class User < ApplicationRecord
   has_one :service
   has_many :reservations
   has_one_attached :photo
+
+
+  validates :username, presence: true, uniqueness: true, length: {
+    in: 3..32,
+    wrong_length: "%{count} characters. Username must have between 3 and 32 characters "
+  }
+  validates :first_name, presence: true, length: {
+    in: 3..32,
+    wrong_length: "%{count} characters. First name must have between 3 and 32 characters "
+  }
+  validates :last_name, presence: true, length: {
+    in: 3..32,
+    wrong_length: "%{count} characters. Last name must have between 3 and 32 characters "
+  }
 end
