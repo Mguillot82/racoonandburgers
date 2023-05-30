@@ -4,4 +4,6 @@ class PagesController < ApplicationController
   end
 
   def style; end
+  def legal; end
+  def about; end
 end
