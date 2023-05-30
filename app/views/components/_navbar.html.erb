@@ -18,7 +18,11 @@
             <%= link_to "Messages", "#", class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-            <%= image_tag "https://burgerkingfrance.twic.pics/img/products/f/37/f378eae5-61a3-459f-b40f-4057b4f88e96_?twic=v1/contain=700x700", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% if !current_user.photo.nil? %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag 'https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg' , class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
