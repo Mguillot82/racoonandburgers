@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+def racoon
+  racoon_state = rand(1..3)
+  racoon_state == 1
+end
+
+5.times do |i|
+  user = User.create!(
+    email: "racoon#{i}@racoonmail.rac",
+    password: "123456",
+    username: "testuser#{i}",
+    first_name: "testuserfname#{i}",
+    last_name: "testuserlname#{i}",
+    racoon: racoon,
+    address: "testuser address #{i}",
+    city: "Toulouse"
+  )
+  puts "#{user.username} created"
+end
