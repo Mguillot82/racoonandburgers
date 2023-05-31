@@ -11,7 +11,7 @@
 </ul>
 
 <h2>Disponibilities</h2>
-
+<%= link_to 'Add disponibility', new_racoon_disponibility_path(@racoon) %>
 <ul>
   <% if @racoon.disponibilities.present? %>
     <% @disponibilities.each do |disponibility| %>
