@@ -1,0 +1,4 @@
+<%= simple_form_for [@racoon, @disponibility] do |f| %>
+  <%= f.input :date, as: :string, input_html: { data: { controller: 'flatpickr' } } %>
+  <%= f.submit %>
+<% end %>
