@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
-  before_action :set_user, only: %i[new create edit update]
+  before_action :set_racoon, only: %i[new create edit update]
   before_action :set_service, only: %i[update]
 
   def new
@@ -8,38 +8,38 @@ class ServicesController < ApplicationController
 
   def create
     @service = Service.new(params_service)
-    @service.user = @user
-    if @service.save
-      redirect_to user_path(@user)
+    @service.racoon_id = @racoon.id
+    if @service.save!
+      redirect_to racoon_path(@racoon)
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @service = @user.service
+    @service = @racoon.service
   end
 
   def update
-    @service.user = @user
+    @service.racoon = @racoon
     if @service.update(params_service)
-      redirect_to user_path(@user)
+      redirect_to racoon_path(@racoon)
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @service = @user.service
+    @racoon = Racoon.find(params[:id])
+    @service = @racoon.service
     @service.destroy
-    redirect_to user_path(@user)
+    redirect_to racoon_path(@racoon)
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:user_id])
+  def set_racoon
+    @racoon = Racoon.find(params[:racoon_id])
   end
 
   def set_service

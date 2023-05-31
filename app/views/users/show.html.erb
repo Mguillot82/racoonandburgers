@@ -1,11 +1,4 @@
 <h1><%= @user.username %></h1>
 
-<ul>
-  <% if !@user.service.nil? %>
-    <li>Title: <%= @user.service.title %></li>
-    <li>Description: <%= @user.service.description %></li>
-    <li>Item: <%= @user.service.item %></li>
-    <li>Price: <%= @user.service.price %></li>
-  <% end %>
-</ul>
-<%= link_to "Destroy", service_path, data: { "turbo-method": :delete } %>
+
+<%= button_to "Devenir racoon", racoons_path, method: :post %>
