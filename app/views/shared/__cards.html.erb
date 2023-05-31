@@ -1,15 +1,19 @@
-<% @users.each do |user| %>
-  <div class="co-12 col-sm-6 col-md-4 mb-3">
-    <div class="card-racoon">
-        <div class="card-racoon-img" style="background-image: url('https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg')"></div>
-          <div class="card-racoon-bottom">
-            <div class="card-racoon-bottom-left">
-              <p class="card-racoon-bottom-left-name"><%= user.username%></p>
-              <p class="card-racoon-bottom-left-rating"><i class="fa-solid fa-star"></i><i><%=%></i></p>
-              <p class="card-racoon-bottom-left-city"><%= user.city%></p>
+<div class="cards">
+  <% @users.each do |user| %>
+  <div>
+    <div class="card">
+      <%= link_to "", "/racoon/#{user.id}" %>
+      <div class="d-flex-column">
+        <div class="card-img" style="background-image: url('https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg')"></div>
+          <div class="card-content">
+              <div class="card-title"><%= user.username%></div>
+              <div class="card-address"><%= user.city%></div>
+              <i class="fa-solid fa-star"></i>
+              <div class="card-rating">4.8</div>
+              <div class="card-price">price</div>
             </div>
-          <p class="card-racoon-bottom-right-price">price</p>
         </div>
+      </div>
     </div>
-  </div>
-<% end  %>
+  <% end  %>
+</div>
