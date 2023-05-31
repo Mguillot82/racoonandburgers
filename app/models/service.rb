@@ -1,5 +1,5 @@
 class Service < ApplicationRecord
-  belongs_to :user
+  belongs_to :racoon
 
   validates :title, presence: true, length: {
     in: 6..32,
