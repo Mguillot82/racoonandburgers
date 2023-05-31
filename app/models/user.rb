@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :racoon
-  # has_many :reservations
+  has_many :reservations
   has_many :reviews, through: :reservations
   has_one_attached :photo
 
