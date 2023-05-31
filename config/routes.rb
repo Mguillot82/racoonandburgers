@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index] do
     resources :reservations, only: %i[new create destroy]
   end
-  resources :racoons, except: [:index] do
+  resources :racoons, except: %i[index new edit update] do
     resources :reviews, only: %i[index new create edit update destroy]
     resources :services, only: %i[new create edit update]
     resources :disponibilities, only: %i[new create destroy]

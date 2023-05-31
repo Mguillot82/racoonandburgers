@@ -1,5 +1,5 @@
 class RacoonsController < ApplicationController
-  before_action :set_racoon, only: %i[show]
+  before_action :set_racoon, only: %i[show destroy]
 
   def create
     @racoon = Racoon.new
@@ -13,6 +13,12 @@ class RacoonsController < ApplicationController
   end
 
   def show; end
+
+  def destroy
+    @user = @racoon.user
+    @racoon.destroy!
+    redirect_to user_path(@user)
+  end
 
   def set_racoon
     @racoon = Racoon.find(params[:id])
