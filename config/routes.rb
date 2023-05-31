@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, except: [:index] do
+    resources :reservations, only: %i[new create destroy]
+  end
+  resources :racoons, except: [:index] do
+    resources :reviews, only: %i[index new create edit update destroy]
     resources :services, only: %i[new create edit update]
     resources :disponibilities, only: %i[new create destroy]
-    resources :reviews, only: %i[index new create edit update destroy]
-    resources :reservations, only: %i[new create destroy]
   end
   resources :services, only: %i[destroy]
 
