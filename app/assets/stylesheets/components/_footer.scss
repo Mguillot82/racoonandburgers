@@ -1,23 +1,21 @@
 .footer {
   background: white;
-  // align-items: center;
-  height: 160px;
   padding: 0px 50px;
   color: $primary;
   text-align: center;
   margin-top: 50px;
-  a {
-    opacity: 0.4;
-    text-decoration: none;
-    padding: 0px 10px;
+  .icones a:hover {
+    opacity: 1;
   }
+}
+.icones a {
+  opacity: 0.4;
+  text-decoration: none;
+  padding: 0px 10px;
 }
 .container {
   padding-top: 15px;
   // display: flex;
-}
-.about-links a:hover {
-  opacity: 1;
 }
 
 ul {
@@ -37,7 +35,4 @@ ul {
 .btn:hover {
   background-color: #4D04C4;
   color: white;
-}
-.titles {
-  opacity: .7;
 }
