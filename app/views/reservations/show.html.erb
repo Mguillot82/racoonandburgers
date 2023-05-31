@@ -1,0 +1,16 @@
+<h1>Your reservation</h1>
+
+<%= cl_image_tag @racoon.user.photo.key, height: 300, width: 400, crop: :fill %>
+
+<ul>
+  <li>Date : <%= @disponibility.date %></li>
+  <li>Racoon : <%= @racoon.user.username %></li>
+  <li>Activity address : <%= current_user.address %></li>
+  <h2>Service</h2>
+  <li>Title : <%= @service.title %></li>
+  <li>Description : <%= @service.description %></li>
+  <li>item : <%= @service.item %></li>
+  <li>price : <%= @service.price %></li>
+
+
+</ul>
