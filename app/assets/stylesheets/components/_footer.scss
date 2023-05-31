@@ -7,16 +7,24 @@
   text-align: center;
   margin-top: 50px;
 }
-.footer-links {
-  padding-top: 30px;
+.container {
+  padding-top: 15px;
 }
-.footer-links a {
+.about-links a {
   color: $secondary;
   opacity: 0.15;
   text-decoration: none;
-  font-size: 24px;
+  // font-size: 24px;
   padding: 0px 10px;
 }
 .footer-links a:hover {
   opacity: 1;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li .icones {
+  padding-top: 4px;
 }
