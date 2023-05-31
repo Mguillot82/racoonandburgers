@@ -1,28 +1,29 @@
 <%# FOOTER %>
 <div class="footer">
-  <div class="container text-black">
+  <div class="container">
     <div class="row">
-      <div class="about-links col-4 ps-md-0 mb-30">
-        <ul>
-          <li class='titles'>ABOUT US</li>
-          <li class='icones'><a href="#">Press</a></li>
-          <li class='icones'><a href="#">Legal notice</a></li>
-          <li class='icones'><a href="#">Privacy Policy</a></li>
-          <li class='icones'><a href="#">About Racoon and Burgers</a></li>
+      <div class="col-4 ps-md-0 mb-30">
+        <ul class="ul-secondary ul-flex-col-end">
+          <li> <%= link_to "About us", "/about" %></li>
+          <li><%= link_to "Legal notice", "/legal" %></li>
+          <li><%= link_to "Press", "/#" %></li>
         </ul>
       </div>
-      <div class="footer-socials-media col-4 mb-30">
-        <ul>
-          <li>CONTACT US</li>
-          <li class='icones'><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-          <li class='icones'><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
-          <li class='icones'><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+      <div class="col-4 ps-md-0 mb-30">
+        <ul class="ul-secondary ul-flex-col-center">
+          <li><%= link_to "Contact us", "/", class: "" %></li>
+          <li><%= link_to "", "/", class: "fa-brands fa-facebook" %></li>
+          <li><%= link_to "", "/", class: "fa-brands fa-twitter" %></li>
+          <li><%= link_to "", "/", class: "fa-brands fa-instagram" %></li>
         </ul>
       </div>
-      <div class="newsletter col-4 ps-md-0 mb-30">
-        <p>NEWSLETTER</p>
-        <a class="btn" href="#">Subscribe</a>
+      <div class="col-4 ps-md-0 mb-30">
+        <ul class="ul-secondary .ul-flex-col-start">
+          <li><%= link_to "Support us !", "/", class: "" %></li>
+          <li><%= link_to "Suscribe", "/", class: "btn btn-secondary" %></li>
+        </ul>
       </div>
+
     </div>
   </div>
 </div>

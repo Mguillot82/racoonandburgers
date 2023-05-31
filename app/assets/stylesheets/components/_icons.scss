@@ -1,0 +1,22 @@
+.icons {
+  padding-top: 5px;
+}
+
+.icons-primary {
+  color: $primary;
+}
+
+.icons-secondary {
+  color: $background;
+}
+
+
+.icons a {
+  opacity: 0.4;
+  text-decoration: none;
+  padding: 0px 10px;
+}
+
+.icons a:hover {
+  opacity: 1;
+}
