@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_152024) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_101627) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,20 +44,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_152024) do
 
   create_table "disponibilities", force: :cascade do |t|
     t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "racoon_id"
+    t.string "status"
+    t.index ["racoon_id"], name: "index_disponibilities_on_racoon_id"
+  end
+
+  create_table "racoons", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_disponibilities_on_user_id"
+    t.float "balance"
+    t.index ["user_id"], name: "index_racoons_on_user_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.string "status"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "disponibility_id", null: false
+    t.bigint "racoon_id"
     t.index ["disponibility_id"], name: "index_reservations_on_disponibility_id"
-    t.index ["user_id"], name: "index_reservations_on_user_id"
+    t.index ["racoon_id"], name: "index_reservations_on_racoon_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -74,19 +83,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_152024) do
     t.text "description"
     t.string "item"
     t.float "price"
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_services_on_user_id"
+    t.bigint "racoon_id"
+    t.index ["racoon_id"], name: "index_services_on_racoon_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
-    t.integer "photo_id"
     t.string "first_name"
     t.string "last_name"
-    t.boolean "racoon", default: false
-    t.float "balance"
     t.string "address"
     t.string "city"
     t.datetime "created_at", null: false
@@ -102,9 +108,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_152024) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "disponibilities", "users"
+  add_foreign_key "disponibilities", "racoons"
+  add_foreign_key "racoons", "users"
   add_foreign_key "reservations", "disponibilities"
-  add_foreign_key "reservations", "users"
+  add_foreign_key "reservations", "racoons"
   add_foreign_key "reviews", "reservations"
-  add_foreign_key "services", "users"
+  add_foreign_key "services", "racoons"
 end

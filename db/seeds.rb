@@ -5,23 +5,131 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-def racoon
-  racoon_state = rand(1..3)
-  racoon_state == 1
-end
 
+Service.destroy_all
+Racoon.destroy_all
 User.destroy_all
 
-5.times do |i|
-  user = User.save!(
-    email: "racoon#{i}@racoonmail.rac",
+puts "Creating user..."
+salome = User.new(
+  {
+    email: "racoon1@racoonmail.rac",
     password: "123456",
-    username: "testuser#{i}",
-    first_name: "testuserfname#{i}",
-    last_name: "testuserlname#{i}",
-    racoon: racoon,
-    address: "testuser address #{i}",
+    username: "testuser1",
+    first_name: "testuserfname1",
+    last_name: "testuserlname1",
+    address: "testuser address 1",
     city: "Toulouse"
-  )
-  puts "#{user.username} created"
-end
+  }
+)
+salome.save!
+puts "#{salome.username} created !"
+
+antoine = User.new(
+  {
+    email: "racoon2@racoonmail.rac",
+    password: "123456",
+    username: "testuser2",
+    first_name: "testuserfname2",
+    last_name: "testuserlname2",
+    address: "testuser address 2",
+    city: "Toulouse"
+  }
+)
+antoine.save!
+puts "#{antoine.username} created !"
+
+julien = User.new(
+  {
+    email: "racoon3@racoonmail.rac",
+    password: "123456",
+    username: "testuser3",
+    first_name: "testuserfname3",
+    last_name: "testuserlname3",
+    address: "testuser address 3",
+    city: "Toulouse"
+  }
+)
+julien.save!
+puts "#{julien.username} created !"
+
+bastien = User.new(
+  {
+    email: "racoon4@racoonmail.rac",
+    password: "123456",
+    username: "testuser4",
+    first_name: "testuserfname4",
+    last_name: "testuserlname4",
+    address: "testuser address 4",
+    city: "Toulouse"
+  }
+)
+bastien.save!
+puts "#{bastien.username} created !"
+
+puts "Creating racoons..."
+racoon1 = Racoon.new(user_id: salome.id, balance: 0)
+racoon1.save!
+puts "#{racoon1} created !"
+
+racoon2 = Racoon.new(user_id: antoine.id, balance: 0)
+racoon2.save!
+puts "#{racoon2} created !"
+
+racoon3 = Racoon.new(user_id: julien.id, balance: 0)
+racoon3.save!
+puts "#{racoon3} created !"
+
+racoon4 = Racoon.new(user_id: bastien.id, balance: 0)
+racoon4.save!
+puts "#{racoon4} created !"
+puts "Racoons created!!!"
+
+puts "Creating services..."
+service1 = Service.new(
+  {
+    title: 'Vegan HotDog',
+    description: 'Vegan hotdog with excellent vegan sausage and beetroot pickle sauce',
+    item: 'Hotdog',
+    price: '15',
+    racoon_id: "#{racoon1.id}"
+  }
+)
+service1.save!
+puts "Created #{service1.title}!!!"
+
+service2 = Service.new(
+  {
+    title: 'Warrior Burger',
+    description: 'Maxi burger with giant beef steack, 5 bacon slices and cheddar sauce',
+    item: 'Burger',
+    price: '25',
+    racoon_id: "#{racoon2.id}"
+  }
+)
+service2.save!
+puts "Created #{service2.title}!!!"
+
+service3 = Service.new(
+  {
+    title: 'Racoon Burger',
+    description: 'Original burger with mixed meet with nuts, salad and greek sauce',
+    item: 'Burger',
+    price: '18',
+    racoon_id: "#{racoon3.id}"
+  }
+)
+service3.save!
+puts "Created #{service3.title}!!!"
+
+service4 = Service.new(
+  {
+    title: 'MAC Burger',
+    description: 'Burger made by the famous MAC',
+    item: 'Burger',
+    price: '13',
+    racoon_id: "#{racoon4.id}"
+  }
+)
+service4.save!
+puts "Created #{service4.title}!!!"

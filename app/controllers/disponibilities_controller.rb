@@ -4,7 +4,7 @@ class DisponibilitiesController < ApplicationController
   # use of scope from disponibility model to query all the disponibilities of
   # the selected racoon from disponibilities.
   def index
-    @disponibilities = Disponibility.user_disponibilities(@racoon.id)
+    @disponibilities = Disponibility.racoon_disponibilities(@racoon.id)
   end
 
   # No need to show a specific disponibility
