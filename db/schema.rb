@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_31_101627) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_124544) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,8 +65,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_101627) do
     t.datetime "updated_at", null: false
     t.bigint "disponibility_id", null: false
     t.bigint "racoon_id"
+    t.bigint "user_id"
     t.index ["disponibility_id"], name: "index_reservations_on_disponibility_id"
     t.index ["racoon_id"], name: "index_reservations_on_racoon_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -112,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_31_101627) do
   add_foreign_key "racoons", "users"
   add_foreign_key "reservations", "disponibilities"
   add_foreign_key "reservations", "racoons"
+  add_foreign_key "reservations", "users"
   add_foreign_key "reviews", "reservations"
   add_foreign_key "services", "racoons"
 end

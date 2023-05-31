@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Reservation.destroy_all
+Disponibility.destroy_all
 Service.destroy_all
 Racoon.destroy_all
 User.destroy_all
@@ -133,3 +135,96 @@ service4 = Service.new(
 )
 service4.save!
 puts "Created #{service4.title}!!!"
+
+
+####### DISPONIBILITIES #######
+puts "Creating dispo..."
+dispo1 = Disponibility.new(
+  {
+    date: Date.new(2023, 5, 31),
+    status: 'available',
+    racoon_id: "#{racoon1.id}"
+  }
+)
+dispo1.save!
+puts "Dispo1 created!!!"
+
+dispo2 = Disponibility.new(
+  {
+    date: Date.new(2023, 6, 13),
+    status: 'available',
+    racoon_id: "#{racoon2.id}"
+  }
+)
+dispo2.save!
+puts "Dispo2 created!!!"
+
+dispo3 = Disponibility.new(
+  {
+    date: Date.new(2023, 7, 14),
+    status: 'reserved',
+    racoon_id: "#{racoon3.id}"
+  }
+)
+dispo3.save!
+puts "Dispo3 created!!!"
+
+dispo4 = Disponibility.new(
+  {
+    date: Date.new(2023, 9, 24),
+    status: 'reserved',
+    racoon_id: "#{racoon4.id}"
+  }
+)
+dispo4.save!
+puts "Dispo4 created!!!"
+
+
+######## RESERVATIONS ########
+status_state = %i[pending cancelled declined accepted].sample
+
+puts "Creating reservations..."
+
+resa1 = Reservation.new(
+  {
+    status: "#{status_state}",
+    disponibility_id: "#{dispo1.id}",
+    racoon_id: "#{racoon1.id}",
+    user_id: salome.id
+  }
+)
+resa1.save!
+puts "Resa1 created!!!!"
+
+resa2 = Reservation.new(
+  {
+    status: "#{status_state}",
+    disponibility_id: "#{dispo2.id}",
+    racoon_id: "#{racoon2.id}",
+    user_id: antoine.id
+  }
+)
+resa2.save!
+puts "Resa2 created!!!!"
+
+resa3 = Reservation.new(
+  {
+    status: "#{status_state}",
+    disponibility_id: "#{dispo3.id}",
+    racoon_id: "#{racoon3.id}",
+    user_id: julien.id
+  }
+)
+resa3.save!
+puts "Resa3 created!!!!"
+
+resa4 = Reservation.new(
+  {
+    status: "#{status_state}",
+    disponibility_id: "#{dispo4.id}",
+    racoon_id: "#{racoon4.id}",
+    user_id: bastien.id
+  }
+)
+resa4.save!
+puts "Resa4 created!!!!"
