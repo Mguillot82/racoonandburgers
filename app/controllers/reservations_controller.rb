@@ -31,7 +31,5 @@ class ReservationsController < ApplicationController
     @disponibility = Disponibility.find(@reservation.disponibility_id)
     @racoon = Racoon.find(@disponibility.racoon_id)
     @service = @racoon.service
-    end
-
-
+  end
 end
