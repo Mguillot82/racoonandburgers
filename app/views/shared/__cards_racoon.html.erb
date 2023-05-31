@@ -1,16 +1,17 @@
 <div class="cards">
-  <% @users.each do |user| %>
+  <% @racoons.each do |racoon| %>
   <div>
     <div class="card">
-      <%= link_to "", "/racoon/#{user.id}" %>
+      <%= link_to "", racoon_path(racoon) %>
       <div class="d-flex-column">
         <div class="card-img" style="background-image: url('https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg')"></div>
           <div class="card-content">
-              <div class="card-title"><%= user.username%></div>
-              <div class="card-address"><%= user.city%></div>
+              <div class="card-title"><%= racoon.user.username%></div>
+              <div class="card-address"><%= racoon.user.city%></div>
               <i class="fa-solid fa-star"></i>
               <div class="card-rating">4.8</div>
               <div class="card-price">price</div>
+
             </div>
         </div>
       </div>
