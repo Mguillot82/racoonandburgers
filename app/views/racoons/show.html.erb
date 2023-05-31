@@ -1,0 +1,11 @@
+<h1><%= @racoon.user.username %></h1>
+
+<ul>
+  <% if !@racoon.service.nil? %>
+    <li>Title: <%= @racoon.service.title %></li>
+    <li>Description: <%= @racoon.service.description %></li>
+    <li>Item: <%= @racoon.service.item %></li>
+    <li>Price: <%= @racoon.service.price %></li>
+    <%= link_to "Destroy", service_path, data: { "turbo-method": :delete } %>
+  <% end %>
+</ul>
