@@ -22,7 +22,7 @@ class DisponibilitiesController < ApplicationController
   def create
     @disponibility = Disponibility.new(disponibility_params)
     @disponibility.racoon = @racoon
-    @disponibility.status = :available
+    @disponibility.status = 'available'
     if @disponibility.save!
       redirect_to racoon_path(@racoon)
     else
