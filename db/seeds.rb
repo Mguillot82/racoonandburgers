@@ -138,11 +138,13 @@ puts "Created #{service4.title}!!!"
 
 
 ####### DISPONIBILITIES #######
+status_resa_state = %i[available reserved].sample
+
 puts "Creating dispo..."
 dispo1 = Disponibility.new(
   {
-    date: Date.new(2023, 5, 31),
-    status: 'available',
+    date: '2023-05-31',
+    status: "#{status_resa_state}",
     racoon_id: "#{racoon1.id}"
   }
 )
@@ -151,8 +153,8 @@ puts "Dispo1 created!!!"
 
 dispo2 = Disponibility.new(
   {
-    date: Date.new(2023, 6, 13),
-    status: 'available',
+    date: '2023-06-13',
+    status: "#{status_resa_state}",
     racoon_id: "#{racoon2.id}"
   }
 )
@@ -161,8 +163,8 @@ puts "Dispo2 created!!!"
 
 dispo3 = Disponibility.new(
   {
-    date: Date.new(2023, 7, 14),
-    status: 'reserved',
+    date: '2023-07-14',
+    status: "#{status_resa_state}",
     racoon_id: "#{racoon3.id}"
   }
 )
@@ -171,12 +173,13 @@ puts "Dispo3 created!!!"
 
 dispo4 = Disponibility.new(
   {
-    date: Date.new(2023, 9, 24),
-    status: 'reserved',
+    date: '2023-09-24',
+    status: "#{status_resa_state}",
     racoon_id: "#{racoon4.id}"
   }
 )
 dispo4.save!
+p dispo4
 puts "Dispo4 created!!!"
 
 
