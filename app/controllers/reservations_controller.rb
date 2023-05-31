@@ -1,5 +1,8 @@
 class ReservationsController < ApplicationController
-
+  before_action :set_user
+  before_action :set_racoon
+  before_action :set_dispo
+  
 
   private
 
