@@ -12,7 +12,9 @@ class RacoonsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @disponibilities = Disponibility.where(racoon_id: @racoon, status: 'available')
+  end
 
   def destroy
     @user = @racoon.user

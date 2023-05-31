@@ -179,7 +179,6 @@ dispo4 = Disponibility.new(
   }
 )
 dispo4.save!
-p dispo4
 puts "Dispo4 created!!!"
 
 
