@@ -1,4 +1,7 @@
 <h1><%= @user.username %></h1>
 
-
-<%= button_to "Devenir racoon", racoons_path, method: :post %>
+<% if @user.racoon.present? %>
+  <%= link_to "Ne plus être racoon", racoon_path(@user.racoon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% else %>
+  <%= button_to "Devenir racoon", racoons_path, method: :post %>
+<% end %>
