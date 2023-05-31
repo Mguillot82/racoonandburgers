@@ -21,16 +21,13 @@ class DisponibilitiesController < ApplicationController
   # should be only available for racoons
   def create
     @disponibility = Disponibility.new(disponibility_params)
-    if @disponibility.save
-      redirect_to user_path
+    @disponibility.racoon = @racoon
+    @disponibility.status = 'available'
+    if @disponibility.save!
+      redirect_to racoon_path(@racoon)
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  # should be only available for racoons
-  def edit
-    @disponibility = Disponibility.find(params[:id])
   end
 
   # should be only available for racoons
@@ -53,10 +50,10 @@ class DisponibilitiesController < ApplicationController
   private
 
   def disponibility_params
-    params.require(:disponibility).permit(:date)
+    params.require(:disponibility).permit(:date, :status)
   end
 
   def set_racoon
-    @racoon = User.find(params[:racoon_id])
+    @racoon = Racoon.find(params[:racoon_id])
   end
 end
