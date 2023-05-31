@@ -1,38 +1,17 @@
 .footer {
-  background: white;
+  background: $primary;
   padding: 0px 50px;
-  color: $primary;
-  text-align: center;
-  margin-top: 50px;
-  .icones a:hover {
-    opacity: 1;
+  color: $background;
+  a {
+    color: $background;
+    text-decoration: none;
+    padding: 4px;
+    margin-bottom: 4px;
   }
-}
-.icones a {
-  opacity: 0.4;
-  text-decoration: none;
-  padding: 0px 10px;
-}
-.container {
-  padding-top: 15px;
-  // display: flex;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.icones {
-  padding-top: 5px;
-}
-
-.btn {
-  background-color: #670BFF;
-  color: white;
-  font-size: 15px;
-  transition: background 0.3s ease;
-}
-.btn:hover {
-  background-color: #4D04C4;
-  color: white;
+  a:hover {
+    text-decoration: none;
+    padding: 8px;
+    margin-bottom: 4px;
+    border-radius: 20px;
+  }
 }
