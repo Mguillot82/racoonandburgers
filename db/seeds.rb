@@ -10,6 +10,8 @@ def racoon
   racoon_state == 1
 end
 
+User.destroy_all
+
 5.times do |i|
   user = User.create!(
     email: "racoon#{i}@racoonmail.rac",
