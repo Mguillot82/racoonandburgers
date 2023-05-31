@@ -5,26 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# def racoon
-#   racoon_state = rand(1..3)
-#   racoon_state == 1
-# end
 
-
-# 5.times do |i|
-#   user = User.new(
-  #     email: "racoon#{i}@racoonmail.rac",
-  #     password: "123456",
-  #     username: "testuser#{i}",
-  #     first_name: "testuserfname#{i}",
-  #     last_name: "testuserlname#{i}",
-  #     address: "testuser address #{i}",
-  #     city: "Toulouse"
-  #   )
-  #   user.save!
-  #   puts "#{user.username} created"
-  # end
-
+Service.destroy_all
+Racoon.destroy_all
 User.destroy_all
 
 puts "Creating user..."
@@ -84,14 +67,32 @@ bastien = User.new(
 bastien.save!
 puts "#{bastien.username} created !"
 
+puts "Creating racoons..."
+racoon1 = Racoon.new(user_id: salome.id, balance: 0)
+racoon1.save!
+puts "#{racoon1} created !"
+
+racoon2 = Racoon.new(user_id: antoine.id, balance: 0)
+racoon2.save!
+puts "#{racoon2} created !"
+
+racoon3 = Racoon.new(user_id: julien.id, balance: 0)
+racoon3.save!
+puts "#{racoon3} created !"
+
+racoon4 = Racoon.new(user_id: bastien.id, balance: 0)
+racoon4.save!
+puts "#{racoon4} created !"
+puts "Racoons created!!!"
 
 puts "Creating services..."
 service1 = Service.new(
   {
-    title: 'Vegan Burger',
-    description: 'Vegan burger with excellent vegan fake meet and beetroot pickle sauce',
+    title: 'Vegan HotDog',
+    description: 'Vegan hotdog with excellent vegan sausage and beetroot pickle sauce',
+    item: 'Hotdog',
     price: '15',
-    racoon_id: "#{salome.id}"
+    racoon_id: "#{racoon1.id}"
   }
 )
 service1.save!
@@ -101,8 +102,9 @@ service2 = Service.new(
   {
     title: 'Warrior Burger',
     description: 'Maxi burger with giant beef steack, 5 bacon slices and cheddar sauce',
+    item: 'Burger',
     price: '25',
-    racoon_id: "#{antoine.id}"
+    racoon_id: "#{racoon2.id}"
   }
 )
 service2.save!
@@ -112,9 +114,22 @@ service3 = Service.new(
   {
     title: 'Racoon Burger',
     description: 'Original burger with mixed meet with nuts, salad and greek sauce',
+    item: 'Burger',
     price: '18',
-    racoon_id: "#{julien.id}"
+    racoon_id: "#{racoon3.id}"
   }
 )
 service3.save!
 puts "Created #{service3.title}!!!"
+
+service4 = Service.new(
+  {
+    title: 'MAC Burger',
+    description: 'Burger made by the famous MAC',
+    item: 'Burger',
+    price: '13',
+    racoon_id: "#{racoon4.id}"
+  }
+)
+service4.save!
+puts "Created #{service4.title}!!!"
