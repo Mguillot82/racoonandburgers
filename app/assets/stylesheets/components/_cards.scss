@@ -11,13 +11,34 @@
   display: grid;
   grid-template-columns: 100%;
   border-radius: 8px;
+  border : none;
   overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  background-color: $white;
+  background-color: $background;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
   a {
     position: absolute;
     height: 100%;
     width: 100%;
+  }
+}
+
+.card:hover {
+  transition: all 0.250s ease;
+  padding: 4px;
+  background-color: rgba($ternary, 1);
+  box-shadow: 8px 8px 16px rgba(0,0,0,0.4);
+  .card-content {
+    border-radius: 12px;
+    color: $background;
+  }
+  .card-title {
+    color: $background;
+  }
+  .card-address {
+    color: $background;
+  }
+  .card-price {
+    color: $background;
   }
 }
 
@@ -26,8 +47,7 @@
   height: 160px;
   background-size: cover;
   background-position: center;
-  margin-bottom: 4px;
-  border-radius: 8px;
+  border-radius: 12px 0px 0px;
 }
 
 .card-content {
@@ -37,11 +57,13 @@
   padding:8px;
   grid-template-columns: 3fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
+  background-color: rgba($ternary, $alpha: 0.1);
   i {
     align-self: end;
     grid-column: 2;
     grid-row: 2;
     color: $yellow;
+    margin-right: 8px;
   }
 }
 
@@ -51,34 +73,37 @@
   font-weight: bold;
   font-size: 24px;
   color: $primary;
+  text-shadow: 0px 0px 1px $primary;
   margin-left: 16px;
+  margin-bottom: 0px;
 }
 
 .card-address {
   align-self: start;
   grid-column: 1;
   grid-row: 2;
-  margin-left: 16px;
+  margin-left: 20px;
   font-size: 16px;
+  font-style: italic;
   color: $ternary;
 
 }
 
 .card-rating {
-  align-self: start;
   justify-self: center;
-  font-weight:bold;
-  font-size: 16px;
   grid-column: 2;
   grid-row: 3;
+  margin-right: 8px;
+  font-weight:bold;
+  font-size: 16px;
+
 }
 
 .card-price {
-  align-self: start;
-  margin-left: 16px;
+  margin-left: 20px;
   grid-column: 1;
   grid-row: 3;
   font-weight: bold;
   font-size: 16px;
-  color: $ternary;
+  color: $primary;
 }
