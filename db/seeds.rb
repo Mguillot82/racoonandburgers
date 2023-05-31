@@ -13,7 +13,7 @@ end
 User.destroy_all
 
 5.times do |i|
-  user = User.create!(
+  user = User.save!(
     email: "racoon#{i}@racoonmail.rac",
     password: "123456",
     username: "testuser#{i}",
