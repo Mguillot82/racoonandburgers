@@ -15,7 +15,7 @@
 <ul>
   <% if @racoon.disponibilities.present? %>
     <% @disponibilities.each do |disponibility| %>
-    <li><i><%= disponibility.date %></i><i><%= button_to "Reserver", "http://localhost:3000/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post %></i></li>
+    <li><i><%= disponibility.date %></i><i><%= button_to "Reserver", "https://racoonandburgers.herokuapp.com/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post %></i></li>
     <% end %>
   <% end %>
 </ul>
