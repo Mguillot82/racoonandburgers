@@ -10,7 +10,7 @@ class ServicesController < ApplicationController
     @service = Service.new(params_service)
     @service.racoon_id = @racoon.id
     if @service.save!
-      redirect_to racoon_path(@racoon)
+      redirect_to user_dashboard_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,7 +23,7 @@ class ServicesController < ApplicationController
   def update
     @service.racoon = @racoon
     if @service.update(params_service)
-      redirect_to racoon_path(@racoon)
+      redirect_to user_dashboard_path(current_user)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +33,7 @@ class ServicesController < ApplicationController
     @racoon = Racoon.find(params[:id])
     @service = @racoon.service
     @service.destroy
-    redirect_to racoon_path(@racoon)
+    redirect_to user_dashboard_path(current_user)
   end
 
   private

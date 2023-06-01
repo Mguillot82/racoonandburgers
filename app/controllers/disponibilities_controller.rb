@@ -3,15 +3,6 @@ class DisponibilitiesController < ApplicationController
 
   # use of scope from disponibility model to query all the disponibilities of
   # the selected racoon from disponibilities.
-  def index
-    @disponibilities = Disponibility.racoon_disponibilities(@racoon.id)
-  end
-
-  # No need to show a specific disponibility
-  #
-  # def show
-  #   @disponibility = Disponibility.find()
-  # end
 
   # should be only available for racoons
   def new
@@ -24,7 +15,7 @@ class DisponibilitiesController < ApplicationController
     @disponibility.racoon = @racoon
     @disponibility.status = 'available'
     if @disponibility.save!
-      redirect_to racoon_path(@racoon)
+      redirect_to user_dashboard_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +27,7 @@ class DisponibilitiesController < ApplicationController
     if @disponibility.update(disponibility_params)
       redirect_to user_path
     else
-      render :edit
+      redirect_to user_dashboard_path
     end
   end
 
@@ -44,7 +35,7 @@ class DisponibilitiesController < ApplicationController
   def destroy
     @disponibility = Disponibility.find(params[:id])
     @disponibility.destroy
-    redirect_to user_path
+    redirect_to user_dashboard_path(current_user)
   end
 
   private

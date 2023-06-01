@@ -6,20 +6,20 @@ class RacoonsController < ApplicationController
     @racoon.balance = 0
     @racoon.user_id = current_user.id
     if @racoon.save!
-      redirect_to racoon_path(@racoon)
+      redirect_to new_racoon_service_path(@racoon)
     else
       redirect_to root
     end
   end
 
   def show
-    @disponibilities = Disponibility.where(racoon_id: @racoon, status: 'available')
+    @disponibilities = Disponibility.available_disponibilities(@racoon)
   end
 
   def destroy
     @user = @racoon.user
     @racoon.destroy!
-    redirect_to user_path(@user)
+    redirect_to user_dashboard_path(current_user)
   end
 
   def set_racoon
