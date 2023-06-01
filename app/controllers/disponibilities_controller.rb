@@ -3,15 +3,6 @@ class DisponibilitiesController < ApplicationController
 
   # use of scope from disponibility model to query all the disponibilities of
   # the selected racoon from disponibilities.
-  def index
-    @disponibilities = Disponibility.racoon_disponibilities(@racoon.id)
-  end
-
-  # No need to show a specific disponibility
-  #
-  # def show
-  #   @disponibility = Disponibility.find()
-  # end
 
   # should be only available for racoons
   def new
