@@ -31,6 +31,12 @@ class ReservationsController < ApplicationController
     redirect_to user_dashboard_path(current_user)
   end
 
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to user_dashboard_path(current_user)
+  end
+
   private
 
   def change_status_disponibility(disponibility)
