@@ -27,7 +27,7 @@ class DisponibilitiesController < ApplicationController
     if @disponibility.update(disponibility_params)
       redirect_to user_path
     else
-      render :edit
+      redirect_to user_dashboard_path
     end
   end
 
