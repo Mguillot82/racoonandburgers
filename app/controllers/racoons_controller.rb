@@ -13,7 +13,7 @@ class RacoonsController < ApplicationController
   end
 
   def show
-    @disponibilities = Disponibility.where(racoon_id: @racoon, status: 'available')
+    @disponibilities = Disponibility.available_disponibilities(@racoon)
   end
 
   def destroy
