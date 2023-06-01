@@ -18,8 +18,31 @@ class RacoonsController < ApplicationController
 
   def destroy
     @user = @racoon.user
+    destroy_resa
+    destroy_dispo
+    destroy_service
     @racoon.destroy!
     redirect_to user_dashboard_path(current_user)
+  end
+
+  private
+
+  def destroy_resa
+    Reservation.racoon_reservations(@racoon).each do |resa|
+      resa.destroy!
+    end
+  end
+
+  def destroy_dispo
+    Disponibility.racoon_disponibilities(@racoon).each do |dispo|
+      dispo.destroy!
+    end
+  end
+
+  def destroy_service
+    Service.racoon_services(@racoon).each do |service|
+      service.destroy!
+    end
   end
 
   def set_racoon
