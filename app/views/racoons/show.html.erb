@@ -29,13 +29,13 @@
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Disponibility</a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    <%= link_to "Back to Home", root_path, class: "profile-edit-btn" %>
                     </div>
                 </div>
                 <div class="row">
@@ -91,7 +91,19 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>coondetesmorts@gatherobjects.coon</p>
+                                                <p>decepticoon@gatherobjects.coon</p>
+                                            </div>
+                                        </div>
+                                         <div class="row">
+                                            <div class="col-md-6">
+                                                <label><% if @racoon.disponibilities.present? %>
+      <% @disponibilities.each do |disponibility| %>
+      <li><i><%= disponibility.date %></i> &nbsp;<i><%= button_to "Reserver", "https://racoonandburgers.herokuapp.com/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post, class: "btn btn-primary text-white"%></i></li>
+      <% end %>
+    <% end %></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p></p>
                                             </div>
                                         </div>
                             </div>
@@ -114,7 +126,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Total Projects</label>
+                                                <label>Total Orders</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>230</p>
@@ -139,7 +151,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
+                                        <p>Make a reservation</p>
                                     </div>
                                 </div>
                             </div>
