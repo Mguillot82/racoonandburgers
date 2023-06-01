@@ -8,11 +8,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src='https://imagedelivery.net/9sCnq8t6WEGNay0RAQNdvQ/clclauo9502u8p6qpvltp7i05_4/public' alt="racoon_text_pciture"/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                          <% if @racoon.user.photo.attached? %>
+                            <%= cl_image_tag @racoon.user.photo.key, height: 300, width: 400, crop: :fill %>
+                          <% else %>
+                            <img src='https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg'alt="racoon_text_pciture"/>
+                          <% end %>
                         </div>
                     </div>
                     <div class="col-md-6">
