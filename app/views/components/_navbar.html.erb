@@ -14,7 +14,7 @@
       <%= form_with url: root_path, method: :get do %>
         <div class="search-form-control form-group">
           <div id="form" class="search-form-control form-group">
-            <%= text_field_tag :query, params[:query], class: "form-control string required" %>
+            <%= text_field_tag :query, params[:query], class: "form-control string required", :placeholder => 'Search your racoon' %>
               <%= button_tag type: 'submit', class: "btn text-white btn-flat" do %>
                 <i class="fas fa-search"></i>
               <% end %>
