@@ -4,7 +4,7 @@ class ReservationsController < ApplicationController
   def show; end
 
   def create
-    @reservation = Reservation.new
+    @reservation = Reservation.new(reservation_params)
     @reservation.status = "pending"
     @reservation.disponibility_id = params[:disponibility]
     @disponibility = Disponibility.find(@reservation.disponibility_id)
@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
     @reservation.racoon_id = params[:racoon]
     @reservation.user_id = current_user.id
     if @reservation.save!
+
       redirect_to user_reservation_path(@reservation.user_id, @reservation.id)
     else
       redirect_to racoon_path(@reservation.racoon_id)
@@ -31,5 +32,9 @@ class ReservationsController < ApplicationController
     @disponibility = Disponibility.find(@reservation.disponibility_id)
     @racoon = Racoon.find(@disponibility.racoon_id)
     @service = @racoon.service
+  end
+
+  def reservation_params
+    params.require(:reservation).permit(:status)
   end
 end

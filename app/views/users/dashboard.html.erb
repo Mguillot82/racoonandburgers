@@ -1,5 +1,5 @@
 <h1>Dashboard</h1>
-<h2>Your reservations</h2>
+<h2>Your information</h2>
 <p>Username : <%= @user.username %></p>
 <p>First Name : <%= @user.first_name %></p>
 <p>Last Name : <%= @user.last_name %></p>
@@ -11,17 +11,7 @@
 
 
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-  <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">User</button>
-  </li>
-  <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Racoon</button>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-  <% if @user.reservations.present? %>
+<% if @user.reservations.present? %>
   <h2>Your reservations</h2>
   <div class="row">
     <% @user.reservations.each do |reservation| %>
@@ -37,8 +27,6 @@
     <p>You don't have any reservation yet</p>
   </div>
   <% end %>
-</div>
-  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <% if @user.racoon.present? %>
     <h2>Your racoon profile</h2>
     <h3>Information</h3>
@@ -74,5 +62,4 @@
   <% else %>
     <%= button_to "Become racoon", racoons_path, method: :post, class:"btn btn-secondary" %>
   <% end %>
-  </div>
 </div>
