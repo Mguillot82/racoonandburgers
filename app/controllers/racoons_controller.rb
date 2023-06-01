@@ -6,7 +6,7 @@ class RacoonsController < ApplicationController
     @racoon.balance = 0
     @racoon.user_id = current_user.id
     if @racoon.save!
-      redirect_to racoon_path(@racoon)
+      redirect_to new_racoon_service_path(@racoon)
     else
       redirect_to root
     end
