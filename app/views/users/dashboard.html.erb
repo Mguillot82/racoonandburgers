@@ -54,6 +54,15 @@
           <p><%= reservation.disponibility.date %></p>
           <p><%= reservation.racoon.service.price.round(2) %>€</p>
           <p><%= reservation.status %></p>
+          <% if reservation.status == 'pending' %>
+            <p><%= button_to reservation_accept_path(reservation), method: :patch, class:'btn btn-success' do %>
+                <i class="fa-regular fa-circle-check"></i>
+                <% end %>
+              <%= button_to reservation_refuse_path(reservation), method: :patch, class:'btn btn-danger' do %>
+                <i class="fa-regular fa-circle-xmark"></i>
+                <% end %>
+            </p>
+          <% end %>
           <%= link_to 'Details',user_reservation_path(reservation.user,reservation), class:'btn btn-outline-secondary' %>
           </div>
         <% end %>
