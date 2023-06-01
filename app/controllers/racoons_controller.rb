@@ -19,7 +19,7 @@ class RacoonsController < ApplicationController
   def destroy
     @user = @racoon.user
     @racoon.destroy!
-    redirect_to user_path(@user)
+    redirect_to user_dashboard_path(current_user)
   end
 
   def set_racoon

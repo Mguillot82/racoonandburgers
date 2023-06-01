@@ -149,13 +149,12 @@
             </form>
         </div>
 <div>
-  <h2>Disponibilities</h2>
-  <%= link_to 'Add disponibility', new_racoon_disponibility_path(@racoon) %>
-  <ul>
-    <% if @racoon.disponibilities.present? %>
+  <% if @racoon.disponibilities.present? %>
+    <h2>Disponibilities</h2>
+    <ul>
       <% @disponibilities.each do |disponibility| %>
       <li><i><%= disponibility.date %></i><i><%= button_to "Reserver", "/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post %></i></li>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  <% end %>
 </div>

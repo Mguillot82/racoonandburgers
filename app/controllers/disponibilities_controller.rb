@@ -15,7 +15,7 @@ class DisponibilitiesController < ApplicationController
     @disponibility.racoon = @racoon
     @disponibility.status = 'available'
     if @disponibility.save!
-      redirect_to racoon_path(@racoon)
+      redirect_to user_dashboard_path(current_user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class DisponibilitiesController < ApplicationController
   def destroy
     @disponibility = Disponibility.find(params[:id])
     @disponibility.destroy
-    redirect_to user_path
+    redirect_to user_dashboard_path(current_user)
   end
 
   private

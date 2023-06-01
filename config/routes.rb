@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   get "/style", to: 'pages#style'
   get "/legal", to: 'pages#legal'
   get "/about", to: 'pages#about'
+  get "/users/:id/dashboard", to: 'users#dashboard', as: :user_dashboard
 end
