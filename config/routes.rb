@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get "/legal", to: 'pages#legal'
   get "/about", to: 'pages#about'
   get "/users/:id/dashboard", to: 'users#dashboard', as: :user_dashboard
+  patch "/reservation/:id/accept", to: 'reservations#accept', as: :reservation_accept
+  patch "/reservation/:id/refuse", to: 'reservations#refuse', as: :reservation_refuse
 end
