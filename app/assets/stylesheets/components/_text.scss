@@ -1,0 +1,29 @@
+.txt {
+  font : $body-font;
+}
+
+.txt-primary {
+  color:$primary;
+}
+
+.txt-secondary {
+  color: $secondary;
+}
+
+.txt-ternary {
+  color: $ternary;
+}
+
+.txt-background {
+  color: $background;
+}
+
+.text-light {
+  color: $light-brown;
+}
+
+.txt-title {
+  font-size: 24px;
+  font-weight: bold;
+  font: $headers-font;
+}
