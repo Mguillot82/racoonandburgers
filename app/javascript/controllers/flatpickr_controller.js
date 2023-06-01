@@ -6,7 +6,8 @@ export default class extends Controller {
   connect() {
     console.log('hello')
     new flatpickr(this.element, {
-      enableTime: false
+      enableTime: false,
+      minDate: 'today'
   })
   }
 }
