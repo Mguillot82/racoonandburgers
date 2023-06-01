@@ -1,14 +1,6 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://i.pinimg.com/originals/74/98/52/749852f182bcf4f96c99d311af4385d8.jpg);">
   <div class="container">
     <h1>Racoons and Burgers</h1>
-    <div>
-      <%= form_with url: root_path, method: :get do %>
-        <div id="form" class="search-form-control form-group">
-          <%= text_field_tag :query, params[:query], class: "form-control string required" %>
-          <%= submit_tag "Rechercher", class: "btn btn-warning text-white" %>
-        </div>
-      <% end %>
-    </div>
   </div>
 </div>
 <div class="container py-5">
