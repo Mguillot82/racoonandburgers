@@ -10,6 +10,4 @@ class Service < ApplicationRecord
     wrong_length: "%{count} characters. Title must have between 6 and 32 characters "
   }
   validates :price, presence: true, numericality: true
-
-  scope :racoon_services, ->(racoon_id) { where("racoon_id = ?", racoon_id) }
 end
