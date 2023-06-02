@@ -1,5 +1,5 @@
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: space-evenly;
   background: $primary;
   position: sticky;
   top: 0;
@@ -28,4 +28,10 @@ a.dropdown-item:hover {
 .navbar-brand {
   background-color: white;
   border-radius: 50%;
+  margin-left: 40px;
+}
+
+.nav-item {
+  margin-right: 40px;
+  padding: 8px;
 }
