@@ -8,9 +8,8 @@ Rails.application.routes.draw do
   resources :racoons, except: %i[index new edit update] do
     resources :reviews, only: %i[index new create edit update destroy]
     resources :services, only: %i[new create edit update]
-    resources :disponibilities, only: %i[new create update]
+    resources :disponibilities, only: %i[new create update destroy]
   end
-  resources :disponibilities, only: [:destroy]
   resources :services, only: %i[destroy]
 
   # Defines the root path route ("/")
