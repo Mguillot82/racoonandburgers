@@ -1,70 +1,97 @@
-<h1>Dashboard</h1>
-<h2>Your information</h2>
-<p>Username : <%= @user.username %></p>
-<p>First Name : <%= @user.first_name %></p>
-<p>Last Name : <%= @user.last_name %></p>
-<p>Address : <%= @user.address %></p>
-<p>City : <%= @user.city %></p>
-<%= link_to "Change my information", edit_user_registration_path(@user), class:"btn btn-secondary" %>
-
-<% if @user.reservations.present? %>
-  <h2>Your reservations</h2>
-  <div class="row">
-    <% @user.reservations.each do |reservation| %>
-      <div class="col border">
-      <p><strong><%= reservation.racoon.user.username %></strong></p>
-      <p><%= reservation.disponibility.date %></p>
-      <p><%= reservation.racoon.service.price.round(2) %>€</p>
-      <p><%= reservation.status %></p>
-      <%= link_to 'Details',user_reservation_path(@user,reservation), class:'btn btn-outline-secondary' %>
-      </div>
-    <% end %>
-  <% else %>
-    <p>You don't have any reservation yet</p>
+<div class="container">
+  <h1 class="text-center">Dashboard</h1>
+  <br>
+  <h2 class="mt-5 mb-5">Your information</h2>
+  <div class="d-flex align-items-center">
+    <div class="me-5">
+      <p><strong>Username</strong> : <%= @user.username %></p>
+      <p><strong>First Name :</strong> <%= @user.first_name %></p>
+      <p><strong>Last Name :</strong> <%= @user.last_name %></p>
+      <p><strong>Address :</strong> <%= @user.address %></p>
+      <p><strong>City :</strong> <%= @user.city %></p>
+    </div>
+    <div class="ms-5">
+    <%= link_to "Change my information", edit_user_registration_path(@user), class:"btn btn-secondary" %>
+    </div>
   </div>
-  <% end %>
-    <% if @user.racoon.present? %>
-    <h2>Your racoon profile</h2>
-    <h3>Information</h3>
-    <% if @user.racoon.service.present?%>
-      <p>Title : <strong><%= @user.racoon.service.title %></strong></p>
-      <p>Description : <%= @user.racoon.service.description %></p>
-      <p>Item : <%= @user.racoon.service.item %></p>
-      <p>Price : <%= @user.racoon.service.price %>€</p>
-      <%= link_to "I'm done being racoon", racoon_path(@user.racoon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-secondary" %>
-      <%= link_to 'Change your service',edit_racoon_service_path(@user.racoon, @user.racoon.service), class:'btn btn-outline-secondary' %>
-    <% else %>
-      <%= link_to 'Add a service',new_racoon_service_path(@user.racoon), class:'btn btn-outline-secondary' %>
-    <% end %>
-    <h3>My Disponibilities</h3>
-      <%= link_to 'Add disponibility', new_racoon_disponibility_path(@user.racoon) %>
-      <% @user.racoon.disponibilities.each do |disponibility| %>
-        <p><strong><%= disponibility.date %></strong> - <%= disponibility.status %></p>
+
+
+
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link navigateur active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Your Orders</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link navigateur" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Racoon</button>
+  </li>
+</ul>
+<div class="tab-content" id="pills-tabContent">
+<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+  <% if @user.reservations.present? %>
+    <h2 class="mt-4">Your reservations</h2>
+    <div class="row">
+      <% @user.reservations.each do |reservation| %>
+        <div class="col-2 text-center rounded bg-white b-5 mt-5 mb-5 py-3 shadow">
+        <p><strong><%= reservation.racoon.user.username %></strong></p>
+        <p><%= reservation.disponibility.date %></p>
+        <p><%= reservation.racoon.service.price.round(2) %>€</p>
+        <p><%= reservation.status %></p>
+        <%= link_to 'Details',user_reservation_path(@user,reservation), class:'btn btn-outline-secondary' %>
+        </div>
       <% end %>
-    <% if @user.racoon.reservations.present?%>
-      <h3>Bookings</h3>
-      <div class="row">
-        <% @user.racoon.reservations.each do |reservation| %>
-          <div class="col border">
-          <p><strong><%= reservation.user.username %></strong></p>
-          <p><%= reservation.disponibility.date %></p>
-          <p><%= reservation.racoon.service.price.round(2) %>€</p>
-          <p><%= reservation.status %></p>
-          <% if reservation.status == 'pending' %>
-            <p><%= button_to reservation_accept_path(reservation), method: :patch, class:'btn btn-success' do %>
-                <i class="fa-regular fa-circle-check"></i>
-                <% end %>
-              <%= button_to reservation_refuse_path(reservation), method: :patch, class:'btn btn-danger' do %>
-                <i class="fa-regular fa-circle-xmark"></i>
-                <% end %>
-            </p>
-          <% end %>
-          <%= link_to 'Details',user_reservation_path(reservation.user,reservation), class:'btn btn-outline-secondary' %>
-          </div>
-        <% end %>
-      </div>
+    <% else %>
+      <p>You don't have any reservation yet</p>
     <% end %>
-  <% else %>
-    <%= button_to "Become racoon", racoons_path, method: :post, class:"btn btn-secondary" %>
-  <% end %>
+    </div>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <% if @user.racoon.present? %>
+      <h2 class="mb-5 mt-4">Your racoon profile</h2>
+      <h3>Information</h3>
+      <% if @user.racoon.service.present?%>
+        <p><strong>Title : </strong><%= @user.racoon.service.title %></strong></p>
+        <p><strong>Description : </strong><%= @user.racoon.service.description %></p>
+        <p><strong>Item : </strong><%= @user.racoon.service.item %></p>
+        <p><strong>Price : </strong><%= @user.racoon.service.price %>€</p>
+        <%= link_to "I'm done being racoon", racoon_path(@user.racoon), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-secondary" %>
+        <%= link_to 'Change your service',edit_racoon_service_path(@user.racoon, @user.racoon.service), class:'btn btn-outline-secondary' %>
+      <% else %>
+        <%= link_to 'Add a service',new_racoon_service_path(@user.racoon), class:'btn btn-outline-secondary' %>
+
+      <% end %>
+      <h3 class="mt-5 mb-3">My Disponibilities</h3>
+        <%= link_to 'Add disponibility', new_racoon_disponibility_path(@user.racoon) %>
+        <% @user.racoon.disponibilities.each do |disponibility| %>
+          <p><strong><%= disponibility.date %></strong> - <%= disponibility.status %> - <%= link_to 'Delete', racoon_disponibility_path(@user.racoon, disponibility), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-secondary" %></p></p>
+        <% end %>
+      <% if @user.racoon.reservations.present?%>
+        <h3 class="mt-5">Bookings</h3>
+        <div class="row col-2 text-center rounded bg-white b-5 mt-5 mb-5 py-3 shadow">
+          <% @user.racoon.reservations.each do |reservation| %>
+            <div class="col">
+            <p><strong><%= reservation.user.username %></strong></p>
+            <p><%= reservation.disponibility.date %></p>
+            <p><%= reservation.racoon.service.price.round(2) %>€</p>
+            <p><%= reservation.status %></p>
+            <% if reservation.status == 'pending' %>
+              <div class="d-flex justify-content-evenly mb-4">
+                <p><%= button_to reservation_accept_path(reservation), method: :patch, class:'btn btn-success' do %>
+                    <i class="fa-regular fa-circle-check"></i>
+                    <% end %>
+                  <%= button_to reservation_refuse_path(reservation), method: :patch, class:'btn btn-danger' do %>
+                    <i class="fa-regular fa-circle-xmark"></i>
+                    <% end %>
+                </p>
+              </div>
+            <% end %>
+            <%= link_to 'Details',user_reservation_path(reservation.user,reservation), class:'btn btn-outline-secondary' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <%= button_to "Become racoon", racoons_path, method: :post, class:"btn btn-secondary" %>
+    <% end %>
+    </div>
+  </div>
 </div>
