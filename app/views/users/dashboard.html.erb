@@ -7,10 +7,6 @@
 <p>City : <%= @user.city %></p>
 <%= link_to "Change my information", edit_user_registration_path(@user), class:"btn btn-secondary" %>
 
-
-
-
-
 <% if @user.reservations.present? %>
   <h2>Your reservations</h2>
   <div class="row">
