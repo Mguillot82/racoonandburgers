@@ -35,6 +35,7 @@ class DisponibilitiesController < ApplicationController
   def destroy
     @disponibility = Disponibility.find(params[:id])
     @disponibility.destroy
+
     redirect_to user_dashboard_path(current_user)
   end
 
