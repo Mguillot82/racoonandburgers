@@ -1,6 +1,11 @@
 .btn {
   padding: 8px!important;
   border-radius: 4px;
+
+  #update {
+    background-color: $green;
+    color: white;
+  }
 }
 
 .btn-primary {
@@ -21,7 +26,7 @@
   border-color: $light-brown!important;
   color: white!important;
   &:hover {
-    padding: 12px!important;
+    // padding: 12px!important;
     font-weight: bold!important;
     background-color: rgba($light-brown, $alpha: 0.4)!important;
     border-color: $secondary!important;
