@@ -62,11 +62,7 @@
       <h3 class="mt-5 mb-3">My Disponibilities</h3>
         <%= link_to 'Add disponibility', new_racoon_disponibility_path(@user.racoon) %>
         <% @user.racoon.disponibilities.each do |disponibility| %>
-          <% if disponibility.status == 'available' %>
-            <p><strong><%= disponibility.date %></strong> - <%= disponibility.status %> - <%= link_to 'Delete', racoon_disponibility_path(@user.racoon, disponibility), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-secondary" %></p></p>
-          <% else %>
-            <p><strong><%= disponibility.date %></strong> - <%= disponibility.status %>
-          <% end %>
+          <p><strong><%= disponibility.date %></strong> - <%= disponibility.status %> - <%= link_to 'Delete', racoon_disponibility_path(@user.racoon, disponibility), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-secondary" %></p></p>
         <% end %>
       <% if @user.racoon.reservations.present?%>
         <h3 class="mt-5">Bookings</h3>
