@@ -1,6 +1,8 @@
 <%# NAVBAR %>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
+
+  <%# HOME-ICON %>
     <div class="col-4">
       <a class="navbar-brand" href="/">
         <img src="https://res.cloudinary.com/dc4rntncg/image/upload/v1685631465/racoon_logo_v1-removebg-preview_lv5eth.png" alt="racoon">
@@ -9,7 +11,9 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <%# SEARCH_BAR %>
+  <%# /HOME-ICON %>
+
+  <%# SEARCH_BAR %>
     <div class="col-4">
       <%= form_with url: root_path, method: :get do %>
         <div class="search-form-control form-group">
@@ -22,35 +26,37 @@
         </div>
       <% end %>
     </div>
-    <%# /SEARCH_BAR %>
+  <%# /SEARCH_BAR %>
+
+  <%# DASHBOARD + AVATAR %>
     <div class="col-4">
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-          <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to "Dashboard", user_dashboard_path(current_user.id), class: "btn btn-primary" %>
-          </li>
-          <li class="nav-item dropdown">
-
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "down", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag 'https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg' , class: "avatar dropdown-toggle", id: "down", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% end %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="down">
-              <%= link_to "Action", "#" ,  class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "Dashboard", user_dashboard_path(current_user.id), class: "btn btn-primary" %>
+            </li>
+            <li class="nav-item dropdown">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "down", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
+                <%= image_tag 'https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg' , class: "avatar dropdown-toggle", id: "down", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="down">
+                <%= link_to "Action", "#" ,  class: "dropdown-item" %>
+                <%= link_to "Another action", "#", class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
-    </div>
+  <%# /DASHBOARD + AVATAR %>
+
   </div>
 </div>
