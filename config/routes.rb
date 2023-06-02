@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     resources :reviews, only: %i[index new create edit update destroy]
     resources :services, only: %i[new create edit update]
     resources :disponibilities, only: %i[new create update]
-    delete "/disponibilities/:id", to: 'disponibilities#destroy', as: :delete_disponibility
   end
+  resources :disponibilities, only: [:destroy]
   resources :services, only: %i[destroy]
 
   # Defines the root path route ("/")
