@@ -5,16 +5,25 @@
   padding: 0px 50px;
   margin-top: 8px;
   color: $background;
+
   a {
     color: $background;
     text-decoration: none;
     padding: 4px;
     margin-bottom: 4px;
   }
+  
   a:hover {
     text-decoration: none;
-    padding-right: 8px;
     margin-bottom: 4px;
     border-radius: 20px;
+  }
+
+  #about-us-padding a:hover {
+    padding: 8px;
+  }
+
+  #icons-hover a:hover {
+    color: $secondary;
   }
 }
