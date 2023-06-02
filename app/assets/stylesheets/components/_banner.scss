@@ -1,7 +1,18 @@
 .banner {
-  height: 100px;
+  height: 240px;
+  background-image: linear-gradient(90deg,rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.8) 70%),
+  url(http://res.cloudinary.com/ddmdozj39/image/upload/q_auto:low/v1685699841/g1daul9elpxh4ufhaztz.png);
   background-position: center;
-  padding: 120px 0;
+  background-size: contain;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    text-align: center;
+    max-width: 30%;
+    padding-left: 40px;
+    margin: 0 40px 0 40px;
+  }
 }
 
 .banner h1 {

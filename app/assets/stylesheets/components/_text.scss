@@ -22,7 +22,15 @@
   color: $light-brown;
 }
 
-.txt-title {
+.txt-title-primary {
+  color:$primary;
+  font-size: 24px;
+  font-weight: bold;
+  font: $headers-font;
+}
+
+.txt-title-background {
+  color:$background;
   font-size: 24px;
   font-weight: bold;
   font: $headers-font;
