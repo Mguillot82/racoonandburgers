@@ -4,155 +4,80 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container emp-profile">
-            <form method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                          <% if @racoon.user.photo.attached? %>
-                            <%= cl_image_tag @racoon.user.photo.key, height: 300, width: 400, crop: :fill %>
-                          <% else %>
-                            <img src='https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg'alt="racoon_text_pciture"/>
-                          <% end %>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="profile-head">
-                                    <h5>
-                                        <%= @racoon.user.username %>
-                                    </h5>
-                                    <h6>
-                                        Racoon Chef
-                                    </h6>
-                                    <p class="proile-rating">RATINGS : <span>9/10</span></p>
-                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">Racoon infos</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                    <%= link_to "Back to Home", root_path, class: "profile-edit-btn" %>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-                            <p>SERVICE DESCRIPTION</p>
-                            <a href=""><%= @racoon.service.description %></a><br/>
-                            <p>SKILLS</p>
-                            <a href="">Japanese Racoon Chef</a><br/>
-                            <a href="">Astraunot</a><br/>
-                            <a href="">President of the Universe</a><br/>
-                            <a href="">Professional Bandit</a><br/>
-                            <a href="">Real Estate Investor</a><br/>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="tab-content profile-tab" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Coon Tribute</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Speciality</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%= @racoon.service.title %></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Price</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><%= @racoon.service.price.round(2) %>€</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>3113 134153</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>decepticoon@gatherobjects.coon</p>
-                                            </div>
-                                        </div>
-                                         <div class="row">
-                                            <div class="col-md-6">
-                                            <label>Disponibilities :</label>
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label><% if @racoon.disponibilities.present? %>
-      <% @disponibilities.each do |disponibility| %>
-      <li><i><%= disponibility.date %></i> &nbsp;<i><%= button_to "Book Chef", "/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post, class: "btn btn-primary text-white"%></i></li>
-      <% end %>
-    <% end %></label>
-                                            </div>
-                                        </div>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Orders</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <% if @racoon.user.photo.attached? %>
+          <%= cl_image_tag @racoon.user.photo.key, height: 300, width: 400, crop: :fill %>
+        <% else %>
+          <img src='https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg'alt="racoon_text_pciture"/>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h5>
+          <%= @racoon.user.username %>
+        </h5>
+        <h6>
+          Racoon Chef
+        </h6>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Back to Home", root_path, class: "profile-edit-btn" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-work">
+        <p>SERVICE DESCRIPTION</p>
+        <a href=""><%= @racoon.service.description %></a><br/>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="tab-content profile-tab" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="row">
+            <div class="col-md-6">
+              <label>Name</label>
+            </div>
+            <div class="col-md-6">
+              <p><%= @racoon.user.username %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Speciality</label>
+            </div>
+            <div class="col-md-6">
+              <p><%= @racoon.service.title %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Price</label>
+            </div>
+            <div class="col-md-6">
+              <p><%= @racoon.service.price.round(2) %>€</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <label>Disponibilities :</label>
+            </div>
+            <div class="col-md-6">
+              <label>
+                <% if @racoon.disponibilities.present? %>
+                  <% @disponibilities.each do |disponibility| %>
+                    <li><%= disponibility.date %> <%= button_to "Book Chef", "/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post, class: "btn btn-primary text-white" %></li>
+                  <% end %>
+                <% end %>
+              </label>
+            </div>
+          </div>
         </div>
-<div>
+      </div>
+    </div>
+  </div>
+</div>
