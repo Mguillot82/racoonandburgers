@@ -1,6 +1,9 @@
 .footer {
+  grid-row-start: 2 ;
+  grid-row-end: 3;
   background: $primary;
   padding: 0px 50px;
+  margin-top: 8px;
   color: $background;
 
   a {
