@@ -33,9 +33,16 @@ class DisponibilitiesController < ApplicationController
 
   # should be only available for racoons
   def destroy
-    @disponibility = Disponibility.find(params[:id])
-    @disponibility.destroy
+    # if @racoon.id == current_user.id
+    @disponibility = Disponibility.racoon_disponibilities(params[:id])
+    @disponibility.each do |dispo|
+      if dispo.id == Disponibility.find(params[:id])
+        raise
+        dispo.destroy!
+      end
+    end
     redirect_to user_dashboard_path(current_user)
+    # end
   end
 
   private

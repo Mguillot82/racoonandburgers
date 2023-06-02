@@ -5,7 +5,7 @@
       <%= link_to "", racoon_path(racoon) %>
       <div class="d-flex-column">
           <% if racoon.user.photo.attached? %>
-        <div class="card-img" style="background-image : <%= cl_image_tag racoon.user.photo.key, height: 300, width: 400, crop: :fill %>">
+        <div class="card-img" style="background-image : url(<%= cl_image_path racoon.user.photo.key, height: 300, width: 400, crop: :fill %>)">
           <% else %>
         <div class="card-img" style="background-image : url('https://t4.ftcdn.net/jpg/04/50/96/23/240_F_450962330_w4RDU0GCIeKy0QvSxBuJ0MHp4mkuXWts.jpg')">
           <% end %>
