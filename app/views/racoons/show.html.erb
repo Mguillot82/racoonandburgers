@@ -67,7 +67,11 @@
               <label>
                 <% if @racoon.disponibilities.present? %>
                   <% @disponibilities.each do |disponibility| %>
-                    <li><%= disponibility.date %> <%= button_to "Book Chef", "/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post, class: "btn btn-primary text-white" %></li>
+                    <li><%= disponibility.date %>
+                      <% if @racoon.id != current_user.racoon.id %>
+                        <%= button_to "Book Chef", "/users/#{current_user.id}/reservations?disponibility=#{disponibility.id}&racoon=#{@racoon.id}", method: :post, class: "btn btn-primary text-white" %></li>
+                      <% else %>
+                      <% end %>
                   <% end %>
                 <% end %>
               </label>
