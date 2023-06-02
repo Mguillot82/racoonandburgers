@@ -1,13 +1,19 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://i.pinimg.com/originals/74/98/52/749852f182bcf4f96c99d311af4385d8.jpg);">
-  <div class="container">
-    <h1>Racoons and Burgers</h1>
+
+<div class="">
+  <div class="banner">
+    <div class="txt-title-background">Racoons and Burgers</div>
+    <div class="txt-title-background">Pick your Favorite Racoon and enjoy your Meal !</div>
   </div>
-</div>
-<div class="container py-5">
-  <% if !@racoons.empty? %>
-    <div class="card-title">Our racoons are the best chefs in the world !</div>
-  <% else %>
-    <div>Sorry, we did not find any results...</div>
-  <% end %>
-  <%= render "shared/cards_racoons" %>
+  <div>
+    <div class="container">
+
+
+    </div>
+    <% if !@racoons.empty? %>
+      <div class="card-title">Our racoons are the best chefs in the world !</div>
+    <% else %>
+      <div>Sorry, we did not find any results...</div>
+    <% end %>
+    <%= render "shared/cards_racoons" %>
+  </div>
 </div>
