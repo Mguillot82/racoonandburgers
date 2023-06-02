@@ -17,11 +17,11 @@ salome = User.new(
   {
     email: "racoon1@racoonmail.rac",
     password: "123456",
-    username: "testuser1",
-    first_name: "testuserfname1",
-    last_name: "testuserlname1",
-    address: "testuser address 1",
-    city: "Toulouse"
+    username: "Salomé",
+    first_name: "Salomé",
+    last_name: "Fauré",
+    address: "59 avenue de Roquettes",
+    city: "Portet sur Garonne"
   }
 )
 salome.save!
@@ -31,11 +31,11 @@ antoine = User.new(
   {
     email: "racoon2@racoonmail.rac",
     password: "123456",
-    username: "testuser2",
-    first_name: "testuserfname2",
-    last_name: "testuserlname2",
-    address: "testuser address 2",
-    city: "Toulouse"
+    username: "Antoine",
+    first_name: "Antoine",
+    last_name: "Lafitte",
+    address: "3 impasse des songes",
+    city: "Montaudran"
   }
 )
 antoine.save!
@@ -45,11 +45,11 @@ julien = User.new(
   {
     email: "racoon3@racoonmail.rac",
     password: "123456",
-    username: "testuser3",
-    first_name: "testuserfname3",
-    last_name: "testuserlname3",
-    address: "testuser address 3",
-    city: "Toulouse"
+    username: "Julien",
+    first_name: "Julien",
+    last_name: "Miguel",
+    address: "19 rue Belair",
+    city: "Auxerre"
   }
 )
 julien.save!
@@ -59,10 +59,10 @@ bastien = User.new(
   {
     email: "racoon4@racoonmail.rac",
     password: "123456",
-    username: "testuser4",
-    first_name: "testuserfname4",
-    last_name: "testuserlname4",
-    address: "testuser address 4",
+    username: "Bastien",
+    first_name: "Bastien",
+    last_name: "Pailloux",
+    address: "18 rue Montaigne",
     city: "Toulouse"
   }
 )
